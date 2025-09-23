@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "openlibrary-mesh-mcp": {
+      "command": "node",
+      "args": ["mcp/server.mjs"],
+      "env": {
+        "MESH_GRAPHQL": "http://localhost:4000/graphql"
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+sources:
+  - name: OpenLibrary
+    handler:
+      openapi:
+        source: ./openlibrary.yaml
+        baseUrl: https://openlibrary.org
+        operationIdFieldNames: true
+
+serve:
+  browser: false
+  endpoint: /graphql
+  port: 4000

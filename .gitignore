@@ -1,0 +1,23 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+package-lock.json
+
+# Mesh
+.mesh/
+.graphqlrc*
+.graphql/**
+.graphiql/**
+
+# Env
+.env
+.env.local
+
+# OS / editor
+.DS_Store
+*.swp
+.idea/
+.vscode/

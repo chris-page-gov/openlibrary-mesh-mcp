@@ -1,0 +1,25 @@
+{
+  "name": "openlibrary-mesh-mcp",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Open-source reproduction of a StepZen-style demo: GraphQL Mesh wrapper for OpenLibrary + minimal MCP server exposing a search tool.",
+  "scripts": {
+    "mesh:dev": "mesh dev",
+    "mesh:start": "mesh start",
+    "mcp:server": "node mcp/server.mjs",
+    "test": "node test/test.mjs"
+  },
+  "engines": {
+    "node": ">=18.17"
+  },
+  "dependencies": {
+    "@graphql-mesh/cli": "^0.90.0",
+    "@graphql-mesh/openapi": "^0.95.0",
+    "graphql": "^16.9.0",
+    "cross-fetch": "^4.0.0",
+    "@modelcontextprotocol/sdk": "^1.2.0",
+    "ws": "^8.18.0",
+    "dotenv": "^16.4.5"
+  }
+}
