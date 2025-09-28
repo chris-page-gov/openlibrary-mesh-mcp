@@ -34,6 +34,28 @@ Wrap the public OpenLibrary REST search as GraphQL using GraphQL Mesh, then expo
 - Dev-only dependencies should be added with `--save-dev`
 - For any Python package management after the initial devcontainer build, use `uv` (preferred) instead of `pip`.
 
+## Devcontainer Best Practices
+
+When editing `.devcontainer/devcontainer.json` or adding setup commands:
+
+- Use an official base image with the required major Node.js version. This project currently targets Node 20 (update the `image` tag; do **not** mix manual Node installs with the image's built-in version).
+- Keep `postCreateCommand` minimal and idempotent. Prefer simply: `"postCreateCommand": "npm install"`.
+- Avoid `corepack enable` in `postCreateCommand` under a non-root user; it attempts to create symlinks in `/usr/local/bin` and commonly fails with `EACCES`. If you need additional package managers (pnpm, yarn), install them explicitly via `npm install -g` or add a feature that provides them.
+- Use `postStartCommand` only for informational echoes (e.g. printing Node and npm versions) – avoid gating logic or environment warnings that may confuse automation.
+- Validate JSON after edits (e.g. `node -e "JSON.parse(require('fs').readFileSync('.devcontainer/devcontainer.json','utf8'))"`).
+- Do not embed global tool upgrades (like `npm install -g npm@latest`) in `postCreateCommand`; perform them manually if required or document them.
+- Keep the file formatting stable (no hard wraps mid-key) to reduce churn in diffs and prevent malformed writes by automation.
+
+### Example Minimal devcontainer.json
+
+```jsonc
+{
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "postCreateCommand": "npm install",
+  "postStartCommand": "echo 'Dev container ready: Node $(node -v), npm $(npm -v)'"
+}
+
+
 ## Testing & Quality Gates
 
 1. Run `npm test` (smoke test)

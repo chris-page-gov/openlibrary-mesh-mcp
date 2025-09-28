@@ -1,12 +1,11 @@
 {
-  "name": "-OpenLibrary Mesh MCP DevContainer",
- "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "name": "OpenLibrary Mesh MCP DevContainer",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
   "features": {
-    "ghcr.io/devcontainers/features/python:1": {
+    "ghcr.io/devcontainers/features/python:1.7.1": {
       "version": "3.11"
     },
-    "ghcr.io/devcontainers/features/github-cli:1": {},
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+    "ghcr.io/devcontainers/features/github-cli:1": {}
   },
   "forwardPorts": [4000],
   "remoteEnv": {
@@ -19,6 +18,6 @@
       }
     }
   },
-  "postCreateCommand": "npm install",
-  "initializeCommand": "if [ -z \"$CODESPACES\" ] && [ -z \"$DEVCONTAINER\" ]; then echo 'WARNING: Not running inside a devcontainer!'; fi"
+  "postCreateCommand": "npm install && npm i -g npm@11.6.0",
+  "postStartCommand": "echo 'Dev container ready: Node $(node -v), npm $(npm -v)'"
 }

@@ -8,10 +8,11 @@
     "mesh:dev": "mesh dev",
     "mesh:start": "mesh start",
     "mcp:server": "node mcp/server.mjs",
-    "test": "node test/test.mjs"
+    "test": "node test/test.mjs",
+    "test:self":"node test/run-with-server.mjs"
   },
   "engines": {
-    "node": ">=18.17"
+    "node": ">=22<23,npm:","npm":"11.6.0"
   },
   "dependencies": {
     "@graphql-mesh/cli": "^0.90.0",
@@ -21,5 +22,6 @@
     "@modelcontextprotocol/sdk": "^1.2.0",
     "ws": "^8.18.0",
     "dotenv": "^16.4.5"
-  }
+  },
+  "packageManager": "npm@11.6.0+sha512.77f3fb0dbbd881835d7bd1217deabdf7ed77fc4ec4f363df64fc3cb986404abf6c437661041080f5c5d225103508e7c9ea30cb2742b7e942675d05a10af2d7b9"
 }
